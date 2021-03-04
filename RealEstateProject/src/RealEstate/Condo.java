@@ -1,3 +1,5 @@
+package RealEstate;
+
 public class Condo extends Residential {
     private int floorLvl;
 
@@ -19,5 +21,9 @@ public class Condo extends Residential {
 
     public void setFloorLvl(int floorLvl) {
         this.floorLvl = floorLvl;
+    }
+
+    public double calculateAppraisalPrice() {
+        return (88.00 * getSqFootage()) + (8000.00 * getBedCount()) + (10000.00 * getBathCount()) + (5000.00 * floorLvl);
     }
 }

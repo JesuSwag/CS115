@@ -1,8 +1,12 @@
+package RealEstate;
+
+import RealEstate.House;
+import RealEstate.Residential;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class HouseTest extends Residential {
+class HouseTest {
     //-- Object to use for testing
     House test = new House();
 
@@ -107,5 +111,11 @@ class HouseTest extends Residential {
         test = new House();
         test.setYardAcres(0.5);
         assertEquals(0.5, test.getYardAcres());
+    }
+
+    @Test
+    void calculateAppraisalPrice() {
+        test = new House();
+        assertEquals(0.0, test.calculateAppraisalPrice());
     }
 }

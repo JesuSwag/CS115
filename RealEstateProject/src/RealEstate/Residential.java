@@ -1,4 +1,6 @@
-public class Residential extends Property {
+package RealEstate;
+
+public abstract class Residential extends Property {
     //-- data members set here
     private int bedCount;
     private double bathCount;
@@ -12,7 +14,7 @@ public class Residential extends Property {
         sqFootage = 0;
     }
 
-    //-- constuctor with arguments for data members
+    //-- constructor with arguments for data members
     public Residential(String streetAddress, int zip, int bedCount, double bathCount, int sqFootage) {
         super(streetAddress, zip);
         this.bedCount = bedCount;
@@ -49,4 +51,6 @@ public class Residential extends Property {
     public void setSqFootage(int sqFootage) {
         this.sqFootage = sqFootage;
     }
+
+    public abstract double calculateAppraisalPrice();
 }

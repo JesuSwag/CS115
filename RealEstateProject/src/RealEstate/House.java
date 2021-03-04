@@ -1,3 +1,5 @@
+package RealEstate;
+
 public class House extends Residential {
     private double yardAcres;
 
@@ -19,5 +21,9 @@ public class House extends Residential {
 
     public void setYardAcres(double yardAcres) {
         this.yardAcres = yardAcres;
+    }
+
+    public double calculateAppraisalPrice() {
+        return (97.00 * getSqFootage()) + (10000.00 * getBedCount()) + (12000.00 * getBathCount()) + (460000.00 * yardAcres);
     }
 }

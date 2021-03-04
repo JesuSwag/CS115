@@ -1,8 +1,12 @@
+package RealEstate;
+
+import RealEstate.Condo;
+import RealEstate.Residential;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CondoTest extends Residential {
+class CondoTest {
 
     //-- Object to use for testing
     Condo test = new Condo();
@@ -108,5 +112,11 @@ class CondoTest extends Residential {
         test = new Condo();
         test.setFloorLvl(5);
         assertEquals(5, test.getFloorLvl());
+    }
+
+    @Test
+    void calculateAppraisalPrice() {
+        test = new Condo();
+        assertEquals(0.0, test.calculateAppraisalPrice());
     }
 }
