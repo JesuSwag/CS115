@@ -1,8 +1,9 @@
 package week3;
 
-public abstract class DessertItem {
+public abstract class DessertItem implements Comparable<DessertItem> {
 	private String m_Name;
 	private double taxPercent = 7.25;
+	private String m_Packaging;
 	
 	public DessertItem() {
 		m_Name = "";
@@ -28,10 +29,21 @@ public abstract class DessertItem {
 	public void setTaxPercent(double num) {
 		taxPercent = num;
 	}
+
+	public String getPackaging() {
+		return m_Packaging;
+	}
+
+	public void setPackaging(String packaging) {
+		m_Packaging = packaging;
+	}
 	
 	public double calculateTax() {
-		double tax = calculateCost() * (0.01 * getTaxPercent());
-		return tax;
+		return calculateCost() * (0.01 * getTaxPercent());
+	}
+
+	public int compareTo(DessertItem itemCost) {
+		return Double.compare(this.calculateCost(), itemCost.calculateCost());
 	}
 	
 	public abstract double calculateCost();

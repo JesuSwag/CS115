@@ -1,6 +1,6 @@
 package week3;
 
-public class Candy extends DessertItem {
+public class Candy extends DessertItem implements SameItem<Candy> {
 	private double m_candyWeight;
 	private double m_pricePerPound;
 	
@@ -8,12 +8,14 @@ public class Candy extends DessertItem {
 		super();
 		m_candyWeight = 0.0;
 		m_pricePerPound = 0.0;
+		setPackaging("");
 	}
 	
 	public Candy(String name, double candyWeight, double pricePerPound) {
 		super(name);
 		m_candyWeight = candyWeight;
 		m_pricePerPound = pricePerPound;
+		setPackaging("Bag");
 	}
 	
 	public double getCandyWeight() {
@@ -35,17 +37,20 @@ public class Candy extends DessertItem {
 	public double calculateCost() {
 		// This is where we define the method to calculate the
 		// cost of candy in order();
-		double cost = m_candyWeight * m_pricePerPound;
-		return cost;
+		return m_candyWeight * m_pricePerPound;
 	}
 	
 	public String toString() {
 		String output;
 		
-		output = String.format("%s \n    %.2f lbs. @ $%.2f/lbs.:		$%.2f    [Tax: $%.2f]\n",
-				getName(), getCandyWeight(), getPricePerPound(), calculateCost(), calculateTax());
+		output = String.format("%s (%s)\n    %.2f lbs. @ $%.2f/lbs.:		$%.2f    [Tax: $%.2f]\n",
+				getName(), getPackaging(), getCandyWeight(), getPricePerPound(), calculateCost(), calculateTax());
 		
 		return output;
+	}
+
+	public boolean isSameAs(Candy object) {
+		return object.getName().equals(getName()) && object.getPricePerPound() == getPricePerPound();
 	}
 
 }

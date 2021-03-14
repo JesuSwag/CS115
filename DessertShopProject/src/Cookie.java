@@ -1,6 +1,6 @@
 package week3;
 
-public class Cookie extends DessertItem {
+public class Cookie extends DessertItem implements SameItem<Cookie> {
 	private int m_cookieQty;
 	private double m_pricePerDozen;
 	
@@ -8,12 +8,14 @@ public class Cookie extends DessertItem {
 		super();
 		m_cookieQty = 0;
 		m_pricePerDozen = 0.0;
+		setPackaging("");
 	}
 	
 	public Cookie(String name, int cookieQty, double pricePerDozen) {
 		super(name);
 		m_cookieQty = cookieQty;
 		m_pricePerDozen = pricePerDozen;
+		setPackaging("Box");
 	}
 	
 	public int getCookieQty() {
@@ -33,18 +35,21 @@ public class Cookie extends DessertItem {
 	}
 	
 	public double calculateCost() {
-		double cost = (m_pricePerDozen / 12 * m_cookieQty);
-		return cost;
+		return (m_pricePerDozen / 12 * m_cookieQty);
 	}
 	
 	public String toString() {
 		//-- We are going to create a string
 		String output;
 		
-		output = String.format("%s Cookie(s) \n%5d cookie(s) @ $%.2f/dozen:		$%.2f    [Tax: $%.2f]\n",
-				getName(), getCookieQty(), getPricePerDozen(), calculateCost(), calculateTax());
+		output = String.format("%s Cookie(s) (%s)\n%5d cookie(s) @ $%.2f/dozen:		$%.2f    [Tax: $%.2f]\n",
+				getName(), getPackaging(), getCookieQty(), getPricePerDozen(), calculateCost(), calculateTax());
 		
 		return output;
+	}
+
+	public boolean isSameAs(Cookie object) {
+		return object.getName().equals(getName()) && object.getPricePerDozen() == getPricePerDozen();
 	}
 	 
 }
